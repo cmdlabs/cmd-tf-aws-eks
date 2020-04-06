@@ -83,16 +83,22 @@ variable "tags" {
 
 variable "autotag_profile" {
   description = "Defines an optional AWS profile to use with aws-cli when auto-tagging subnets"
-  type = string
+  type        = string
   default     = ""
 }
 
 variable "auth_roles" {
   description = "Additional IAM Roles to add to the aws-auth configmap"
   type = list(object({
-    rolearn = string
+    rolearn  = string
     username = string
-    groups = list(string)
+    groups   = list(string)
   }))
   default = []
+}
+
+variable "manage_aws_auth" {
+  description = "Create aws-auth configmap. This requires curl to be available locally as a null_resource is used to check if the API Server is ready"
+  type        = bool
+  default     = false
 }

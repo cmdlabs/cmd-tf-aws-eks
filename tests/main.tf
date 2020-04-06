@@ -8,6 +8,9 @@ module "cluster" {
   private_subnets = ["subnet-0574e1ee9e5c0b2b6", "subnet-01a8bf5e8fd7d4272", "subnet-07b81e6ba3f185586"]
   public_subnets  = ["subnet-0bf82dc96b889af9c", "subnet-0aaf01629503bbc39", "subnet-0cbec076d958a1e78"]
 
+  autotag_subnets = true
+  manage_aws_auth = true
+
   auth_roles = [{
     rolearn  = "arn:aws:iam::722141136946:role/cmdlab-role-console-breakglass"
     username = "cmdlab-role-console-breakglass"

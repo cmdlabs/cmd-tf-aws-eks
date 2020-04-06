@@ -144,6 +144,14 @@ Default:
 ]
 ```
 
+### manage\_aws\_auth
+
+Description: Create aws-auth configmap. This requires curl to be available locally as a null_resource is used to check if the API Server is ready
+
+Type: `bool`
+
+Default: `false`
+
 ### public\_access\_cidrs
 
 Description: Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled
