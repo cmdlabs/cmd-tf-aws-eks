@@ -217,3 +217,15 @@ Description: Kubernetes Cluster API Endpoint
 ### control\_plane\_security\_group
 
 Description: Kubernetes Cluster Control Plane Security Group
+
+### vpc\_id
+
+Description: VPC ID into which the EKS Cluster is deployed
+
+### private\_subnets
+
+Description: Private tier subnet list
+
+### public\_subnets
+
+Description: Public tier subnet list
