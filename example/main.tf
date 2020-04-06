@@ -26,8 +26,8 @@ module "nodegroup1" {
   nodegroup_name    = "nodegroup1"
   nodegroup_version = module.cluster.cluster_version
 
-  vpc_id      = "vpc-08aba235436a32ea1"
-  vpc_subnets = ["subnet-0574e1ee9e5c0b2b6", "subnet-01a8bf5e8fd7d4272", "subnet-07b81e6ba3f185586"]
+  vpc_id      = module.cluster.vpc_id
+  vpc_subnets = module.cluster.private_subnets
 
   instance_types       = ["t3.medium"]
   asg_desired_capacity = 1

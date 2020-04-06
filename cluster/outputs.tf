@@ -54,3 +54,18 @@ output "cluster_oidc_issuer_thumbprint" {
   description = "OIDC issuer thumbprint for use in creating OIDC providers"
   value       = aws_iam_openid_connect_provider.main.thumbprint_list
 }
+
+output "vpc_id" {
+  description = "VPC ID for EKS Cluster"
+  value = var.vpc_id
+}
+
+output "private_subnets" {
+  description = "Private tier subnet list"
+  value = var.private_subnets
+}
+
+output "public_subnets" {
+  description = "Public tier subnet list"
+  value = var.public_subnets
+}
