@@ -102,3 +102,11 @@ variable "manage_aws_auth" {
   type        = bool
   default     = false
 }
+
+
+variable "enable_eks_encryption" {
+  description = "Enable EKS encryption provider for secrets"
+  type        = bool
+  default     = false
+}
+
