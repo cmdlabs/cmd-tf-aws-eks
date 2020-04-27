@@ -1,20 +1,30 @@
+module "vpc" {
+  source = "github.com/cmdlabs/cmd-tf-aws-vpc?ref=0.7.0"
+
+  vpc_name                  = "eks-ci-test"
+  vpc_cidr_block            = "10.13.0.0/16"
+  availability_zones        = ["ap-southeast-2a", "ap-southeast-2b", "ap-southeast-2c"]
+  enable_per_az_nat_gateway = false
+}
+
 module "cluster" {
   source = "../cluster"
 
-  cluster_name    = "cmdlab-sandpit1"
+  cluster_name    = "eks-ci-test"
   cluster_version = "1.15"
 
-  vpc_id          = "vpc-08aba235436a32ea1"
-  private_subnets = ["subnet-0574e1ee9e5c0b2b6", "subnet-01a8bf5e8fd7d4272", "subnet-07b81e6ba3f185586"]
-  public_subnets  = ["subnet-0bf82dc96b889af9c", "subnet-0aaf01629503bbc39", "subnet-0cbec076d958a1e78"]
+  vpc_id          = module.vpc.vpc_id
+  private_subnets = module.vpc.private_tier_subnet_ids
+  public_subnets  = module.vpc.public_tier_subnet_ids
 
   autotag_subnets       = true
+  autotag_profile       = "cmdlabtf-master"
   manage_aws_auth       = true
   enable_eks_encryption = true
 
   auth_roles = [{
-    rolearn  = "arn:aws:iam::722141136946:role/cmdlab-role-console-breakglass"
-    username = "cmdlab-role-console-breakglass"
+    rolearn  = "arn:aws:iam::471871437096:role/cmdlabtf-role-console-breakglass"
+    username = "cmdlabtf-role-console-breakglass"
     groups   = ["system:masters"]
   }]
 

@@ -94,7 +94,7 @@ Description: Create ASG for each VPC subnet
 
 Type: `bool`
 
-Default: `false`
+Default: `true`
 
 ### autoscaling\_enabled
 
