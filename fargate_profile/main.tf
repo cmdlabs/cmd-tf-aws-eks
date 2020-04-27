@@ -9,7 +9,7 @@ resource "aws_eks_fargate_profile" "main" {
 
     content {
       namespace = selector.value.namespace
-      labels = selector.value.labels
+      labels    = selector.value.labels
     }
   }
 

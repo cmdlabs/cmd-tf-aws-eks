@@ -31,7 +31,7 @@ variable "service_account" {
 variable "policies" {
   description = ""
   type = list(object({
-    actions = list(string)
+    actions   = list(string)
     resources = list(string)
   }))
 }

@@ -77,5 +77,5 @@ output "public_subnets" {
 
 output "pod_execution_role_arn" {
   description = "IAM role Fargate nodes will use to join the cluster"
-  value = aws_iam_role.fargate.arn
+  value       = aws_iam_role.fargate.arn
 }
