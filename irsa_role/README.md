@@ -36,7 +36,14 @@ Type: `string`
 
 Description: n/a
 
-Type: `list(map(list(string)))`
+Type:
+
+```hcl
+list(object({
+    actions = list(string)
+    resources = list(string)
+  }))
+```
 
 ### role\_name
 
@@ -52,8 +59,21 @@ Type: `string`
 
 ## Optional Inputs
 
-No optional input.
+The following input variables are optional (have default values):
+
+### tags
+
+Description: Tags to apply to created resources
+
+Type: `map(string)`
+
+Default: `{}`
 
 ## Outputs
 
-No output.
+The following outputs are exported:
+
+### role\_arn
+
+Description: n/a
+

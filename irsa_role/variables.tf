@@ -30,5 +30,14 @@ variable "service_account" {
 
 variable "policies" {
   description = ""
-  type        = list(map(list(string)))
+  type = list(object({
+    actions = list(string)
+    resources = list(string)
+  }))
+}
+
+variable "tags" {
+  description = "Tags to apply to created resources"
+  type        = map(string)
+  default     = {}
 }
