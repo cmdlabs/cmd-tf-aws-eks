@@ -40,9 +40,9 @@ data "aws_iam_policy_document" "nodes" {
 resource "aws_iam_role" "nodes" {
   name = "eks-${var.cluster_name}-nodes"
 
-  assume_role_policy = data.aws_iam_policy_document.nodes.json
+  assume_role_policy    = data.aws_iam_policy_document.nodes.json
   force_detach_policies = true
-  tags = var.tags
+  tags                  = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "nodes_AmazonEKSWorkerNodePolicy" {

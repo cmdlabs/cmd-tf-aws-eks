@@ -57,15 +57,15 @@ output "cluster_oidc_issuer_thumbprint" {
 
 output "vpc_id" {
   description = "VPC ID for EKS Cluster"
-  value = var.vpc_id
+  value       = var.vpc_id
 }
 
 output "private_subnets" {
   description = "Private tier subnet list"
-  value = var.private_subnets
+  value       = var.private_subnets
 }
 
 output "public_subnets" {
   description = "Public tier subnet list"
-  value = var.public_subnets
+  value       = var.public_subnets
 }

@@ -21,7 +21,7 @@ variable "nodegroup_version" {
 variable "asg_per_subnet" {
   description = "Create ASG for each VPC subnet"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "asg_desired_capacity" {
