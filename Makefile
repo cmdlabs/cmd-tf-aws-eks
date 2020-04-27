@@ -8,6 +8,7 @@ docs: .env
 	docker-compose run --rm terraform-utils terraform-docs markdown document cluster > cluster/README.md
 	docker-compose run --rm terraform-utils terraform-docs markdown document irsa_role > irsa_role/README.md
 	docker-compose run --rm terraform-utils terraform-docs markdown document nodegroup > nodegroup/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document fargate_profile > fargate_profile/README.md
 PHONY: docs
 
 format: .env

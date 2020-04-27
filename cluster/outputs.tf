@@ -16,8 +16,13 @@ output "control_plane_endpoint" {
 }
 
 output "control_plane_security_group" {
-  description = "Kubernetes Cluster Control Plane Security Group"
-  value       = aws_security_group.cluster.id
+  description = "Kubernetes Cluster Control Plane Security Group - Used for nodes to communicate"
+  value       = aws_eks_cluster.main.vpc_config[0].cluster_security_group_id
+}
+
+output "control_plane_api_security_group" {
+  description = "Kubernetes Cluster API Security Group - Used for access to the private EKS endpoint"
+  value       = aws_security_group.cluster_api.id
 }
 
 output "control_plane_certificate_authority" {
@@ -68,4 +73,9 @@ output "private_subnets" {
 output "public_subnets" {
   description = "Public tier subnet list"
   value       = var.public_subnets
+}
+
+output "pod_execution_role_arn" {
+  description = "IAM role Fargate nodes will use to join the cluster"
+  value = aws_iam_role.fargate.arn
 }
