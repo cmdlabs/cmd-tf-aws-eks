@@ -1,5 +1,7 @@
+data "aws_region" "current" {}
+
 locals {
-  optional_profile = var.autotag_profile != "" ? "--profile ${var.autotag_profile}" : ""
+  optional_profile = var.autotag_profile != "" ? "--profile ${var.autotag_profile} --region ${data.aws_region.current.name}" : ""
 }
 
 resource "null_resource" "tag-public-subnet" {

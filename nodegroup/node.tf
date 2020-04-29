@@ -74,7 +74,7 @@ resource "aws_launch_template" "node" {
   instance_type = var.instance_types[0]
   user_data     = base64encode(data.template_file.launch_template_userdata.rendered)
 
-  vpc_security_group_ids = [aws_security_group.nodes.id]
+  vpc_security_group_ids = [var.control_plane_security_group]
 
   iam_instance_profile {
     name = aws_iam_instance_profile.nodes_launch_template.name

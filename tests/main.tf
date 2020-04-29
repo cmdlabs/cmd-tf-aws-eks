@@ -81,4 +81,30 @@ module "role1" {
       resources = ["arn:aws:route53:::hostedzone/*"]
     }
   ]
+
+  tags = {
+    Owner = "CMD"
+  }
+}
+
+module "fargateprofile1" {
+  source = "../fargate_profile"
+
+  fargate_profile_name   = "testprofile1"
+  cluster_name           = module.cluster.cluster_name
+  private_subnet_ids     = module.cluster.private_subnets
+  pod_execution_role_arn = module.cluster.pod_execution_role_arn
+
+  selectors = [
+    {
+      namespace = "default"
+      labels = {
+        compute : "fargate"
+      }
+    }
+  ]
+
+  tags = {
+    Owner = "CMD"
+  }
 }

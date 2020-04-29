@@ -54,9 +54,9 @@ Type:
 
 ```hcl
 list(object({
-    rolearn = string
+    rolearn  = string
     username = string
-    groups = list(string)
+    groups   = list(string)
   }))
 ```
 
@@ -118,13 +118,21 @@ Type: `bool`
 
 Default: `true`
 
+### enable\_eks\_encryption
+
+Description: Enable EKS encryption provider for secrets
+
+Type: `bool`
+
+Default: `false`
+
 ### enable\_ssm
 
 Description: Grant AmazonSSMManagedInstanceCore permissions to worker nodes
 
 Type: `bool`
 
-Default: `false`
+Default: `true`
 
 ### enabled\_cluster\_log\_types
 
@@ -146,7 +154,7 @@ Default:
 
 ### manage\_aws\_auth
 
-Description: Create aws-auth configmap. This requires curl to be available locally as a null_resource is used to check if the API Server is ready
+Description: Create aws-auth configmap. This requires curl to be available locally as a null\_resource is used to check if the API Server is ready
 
 Type: `bool`
 
@@ -214,6 +222,10 @@ Description: Kubernetes Cluster OpenID Connect URL
 
 Description: n/a
 
+### control\_plane\_api\_security\_group
+
+Description: Kubernetes Cluster API Security Group - Used for access to the private EKS endpoint
+
 ### control\_plane\_certificate\_authority
 
 Description: Cluster Certificate Authority Certificate
@@ -224,11 +236,11 @@ Description: Kubernetes Cluster API Endpoint
 
 ### control\_plane\_security\_group
 
-Description: Kubernetes Cluster Control Plane Security Group
+Description: Kubernetes Cluster Control Plane Security Group - Used for nodes to communicate
 
-### vpc\_id
+### pod\_execution\_role\_arn
 
-Description: VPC ID into which the EKS Cluster is deployed
+Description: IAM role Fargate nodes will use to join the cluster
 
 ### private\_subnets
 
@@ -237,3 +249,8 @@ Description: Private tier subnet list
 ### public\_subnets
 
 Description: Public tier subnet list
+
+### vpc\_id
+
+Description: VPC ID for EKS Cluster
+

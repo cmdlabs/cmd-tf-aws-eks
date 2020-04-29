@@ -10,52 +10,40 @@ The following input variables are required:
 
 ### cluster\_name
 
-Description: EKS Cluster the role will be used with
+Description: EKS Cluster the fargate profile will be used with
 
 Type: `string`
 
-### namespace
+### fargate\_profile\_name
 
-Description: Kubernetes namespace of the service account
-
-Type: `string`
-
-### oidc\_provider\_arn
-
-Description: EKS Cluster OIDC Provider ARN
+Description: Fargate Profile Name
 
 Type: `string`
 
-### oidc\_provider\_url
+### pod\_execution\_role\_arn
 
-Description: EKS Cluster OIDC Provider URL
+Description: IAM role Fargate nodes will use to join the cluster
 
 Type: `string`
 
-### policies
+### private\_subnet\_ids
 
-Description: n/a
+Description: Private tier subnet list
+
+Type: `list(string)`
+
+### selectors
+
+Description: A map of namespaces and labels that is used to select which pods run on Fargate
 
 Type:
 
 ```hcl
 list(object({
-    actions = list(string)
-    resources = list(string)
+    namespace = string
+    labels    = map(string)
   }))
 ```
-
-### role\_name
-
-Description: IAM Role Name
-
-Type: `string`
-
-### service\_account
-
-Description: Kubernetes service account name
-
-Type: `string`
 
 ## Optional Inputs
 
@@ -73,7 +61,7 @@ Default: `{}`
 
 The following outputs are exported:
 
-### role\_arn
+### fargate\_profile\_arn
 
 Description: n/a
 

@@ -4,6 +4,8 @@ The following providers are used by this module:
 
 - aws (>= 2.55.0)
 
+- null (>= 2.1.2)
+
 - template (>= 2.1)
 
 ## Required Inputs
@@ -249,8 +251,4 @@ Default: `{}`
 
 ## Outputs
 
-The following outputs are exported:
-
-### security\_group
-
-Description: n/a
+No output.
