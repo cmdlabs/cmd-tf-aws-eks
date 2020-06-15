@@ -45,6 +45,7 @@ resource "aws_kms_key" "k8s_master_key" {
 }
 
 resource "aws_kms_alias" "k8s_master_key" {
+  count         = var.enable_eks_encryption ? 1 : 0
   name          = "alias/eks/${var.cluster_name}"
   target_key_id = aws_kms_key.k8s_master_key[0].key_id
 }
