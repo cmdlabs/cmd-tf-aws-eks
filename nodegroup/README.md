@@ -1,6 +1,8 @@
-## Providers
+## Requirements
 
-The following providers are used by this module:
+The following requirements are needed by this module:
+
+- terraform ( >= 0.12.26)
 
 - aws (>= 2.55.0)
 
@@ -252,3 +254,4 @@ Default: `{}`
 ## Outputs
 
 No output.
+

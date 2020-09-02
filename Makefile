@@ -1,14 +1,14 @@
-RELEASE_VERSION = 0.2.1
+RELEASE_VERSION = 0.3.0
 
 ifdef CI
 	PROFILE_REQUIRED=profile
 endif
 
 docs: .env
-	docker-compose run --rm terraform-utils terraform-docs markdown document cluster > cluster/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document irsa_role > irsa_role/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document nodegroup > nodegroup/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document fargate_profile > fargate_profile/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers cluster > cluster/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers irsa_role > irsa_role/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers nodegroup > nodegroup/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers fargate_profile > fargate_profile/README.md
 PHONY: docs
 
 format: .env
