@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] 2020-09-03
+### Breaking
+- For existing clusters it is necessary to import the Cluster CloudWatch Log Group into the Terraform state eg. `terraform import module.<module_name>.aws_cloudwatch_log_group.main /aws/eks/<cluster_name>/cluster`
+
+### Added
+- Cluster CloudWatch Log Group resource
+
 ## [0.3.0] 2020-09-01
 ### Breaking
 - upgraded required_providers format to Terraform 0.13 (compatible with Terraform >= 0.12.26)

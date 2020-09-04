@@ -29,9 +29,16 @@ resource "aws_eks_cluster" "main" {
   tags = var.tags
 
   depends_on = [
+    aws_cloudwatch_log_group.main,
     aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.cluster_AmazonEKSServicePolicy,
   ]
+}
+
+resource "aws_cloudwatch_log_group" "main" {
+  name              = "/aws/eks/${var.cluster_name}/cluster"
+  retention_in_days = var.cluster_log_retention
+  tags              = var.tags
 }
 
 resource "aws_iam_openid_connect_provider" "main" {
