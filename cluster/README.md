@@ -112,6 +112,14 @@ Type: `bool`
 
 Default: `true`
 
+### cluster\_log\_retention
+
+Description: Specifies the number of days you want to retain control plane log events. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653. Set to 0 to never expire events.
+
+Type: `number`
+
+Default: `0`
+
 ### enable\_ecr
 
 Description: Grant AmazonEC2ContainerRegistryReadOnly permissions to worker nodes

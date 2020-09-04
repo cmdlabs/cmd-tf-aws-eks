@@ -18,6 +18,12 @@ variable "cluster_endpoint_public" {
   default     = true
 }
 
+variable "cluster_log_retention" {
+  description = "Specifies the number of days you want to retain control plane log events. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653. Set to 0 to never expire events."
+  type        = number
+  default     = 0
+}
+
 variable "private_subnets" {
   description = "Private tier subnet list"
   type        = list(string)
