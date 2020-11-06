@@ -108,6 +108,14 @@ Type: `bool`
 
 Default: `true`
 
+### create\_schedule
+
+Description: Schedule shutdown and startup of ASG instances
+
+Type: `bool`
+
+Default: `false`
+
 ### detailed\_monitoring
 
 Description: Enable EC2 detailed monitoring
@@ -210,6 +218,22 @@ Description: Root EBS volume size
 Type: `number`
 
 Default: `100`
+
+### scheduled\_shutdown
+
+Description: Scheduled shutdown of ASG instances in UTC
+
+Type: `string`
+
+Default: `"00 09 * * MON-FRI"`
+
+### scheduled\_startup
+
+Description: Scheduled startup of ASG instances in UTC
+
+Type: `string`
+
+Default: `"00 21 * * SUN-THU"`
 
 ### spot\_allocation\_strategy
 
