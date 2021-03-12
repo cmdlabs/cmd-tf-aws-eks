@@ -20,12 +20,3 @@ data "template_file" "launch_template_userdata" {
     proxy_bypass       = var.proxy_bypass
   }
 }
-
-data "null_data_source" "asg_tags" {
-  count = length(keys(var.tags))
-  inputs = {
-    key                 = element(keys(var.tags), count.index)
-    value               = element(values(var.tags), count.index)
-    propagate_at_launch = "true"
-  }
-}

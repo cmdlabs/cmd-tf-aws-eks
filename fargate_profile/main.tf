@@ -4,7 +4,7 @@ resource "aws_eks_fargate_profile" "main" {
   pod_execution_role_arn = var.pod_execution_role_arn
   subnet_ids             = var.private_subnet_ids
 
-  dynamic selector {
+  dynamic "selector" {
     for_each = var.selectors
 
     content {

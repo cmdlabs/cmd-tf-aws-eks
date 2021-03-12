@@ -11,7 +11,7 @@ module "cluster" {
   source = "../cluster"
 
   cluster_name    = "eks-ci-test"
-  cluster_version = "1.15"
+  cluster_version = "1.19"
 
   vpc_id          = module.vpc.vpc_id
   private_subnets = module.vpc.private_tier_subnet_ids

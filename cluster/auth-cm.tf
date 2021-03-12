@@ -7,11 +7,11 @@ resource "kubernetes_config_map" "aws_auth" {
   }
 
   data = {
-    mapRoles = "${templatefile("${path.module}/auth.tpl", {
+    mapRoles = templatefile("${path.module}/auth.tpl", {
       nodes_role_arn   = aws_iam_role.nodes.arn
       fargate_role_arn = aws_iam_role.fargate.arn
       roles            = var.auth_roles
-    })}"
+    })
   }
 
   depends_on = [
