@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] 2021-03-12
+### Changed
+- Implemented work around to terraform bug that prevents the use of tags with computed values
+- Uplift module tests to use Terraform 0.14, AWS Provider 3.x and Kubernetes Provider 2.x
+
 ## [0.4.0] 2020-09-03
 ### Breaking
 - For existing clusters it is necessary to import the Cluster CloudWatch Log Group into the Terraform state eg. `terraform import module.<module_name>.aws_cloudwatch_log_group.main /aws/eks/<cluster_name>/cluster`

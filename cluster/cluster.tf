@@ -13,7 +13,7 @@ resource "aws_eks_cluster" "main" {
     public_access_cidrs     = var.public_access_cidrs
   }
 
-  dynamic encryption_config {
+  dynamic "encryption_config" {
     for_each = var.enable_eks_encryption ? [1] : [] # Only include this block if var.enable_eks_encryption==true
 
     content {

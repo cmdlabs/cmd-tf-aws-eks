@@ -28,7 +28,7 @@ resource "aws_iam_role" "main" {
   assume_role_policy = data.aws_iam_policy_document.federated.json
 }
 
-resource aws_iam_policy "main" {
+resource "aws_iam_policy" "main" {
   name   = "eks-${var.cluster_name}-${var.role_name}"
   policy = data.aws_iam_policy_document.main.json
 }

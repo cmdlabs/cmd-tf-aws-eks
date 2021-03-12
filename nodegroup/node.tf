@@ -40,31 +40,15 @@ resource "aws_autoscaling_group" "node" {
     ignore_changes = [desired_capacity]
   }
 
-  tags = concat(
-    [
-      {
-        "key"                 = "Name"
-        "value"               = "eks-${var.cluster_name}-nodes-${var.nodegroup_name}"
-        "propagate_at_launch" = "true"
-      },
-      {
-        "key"                 = "kubernetes.io/cluster/${var.cluster_name}"
-        "value"               = "owned"
-        "propagate_at_launch" = "true"
-      },
-      {
-        "key"                 = "k8s.io/cluster-autoscaler/${var.autoscaling_enabled == true ? "enabled" : "disabled"}"
-        "value"               = "true"
-        "propagate_at_launch" = "false"
-      },
-      {
-        "key"                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
-        "value"               = "owned"
-        "propagate_at_launch" = "true"
-      },
-    ],
-    data.null_data_source.asg_tags.*.outputs
-  )
+  # Workaround for https://github.com/hashicorp/terraform-provider-aws/issues/14085
+  dynamic "tag" {
+    for_each = local.tags
+    content {
+      key                 = tag.value.key
+      value               = tag.value.value
+      propagate_at_launch = tag.value.propagate_at_launch
+    }
+  }
 }
 
 resource "aws_launch_template" "node" {
@@ -101,4 +85,39 @@ resource "aws_launch_template" "node" {
 
 resource "aws_iam_instance_profile" "nodes_launch_template" {
   role = var.iam_role_name
+}
+
+locals {
+  transformed_tags = [for k, v in var.tags :
+    {
+      key                 = k
+      value               = v
+      propagate_at_launch = "true"
+    }
+  ]
+
+  tags = concat([
+    {
+      "key"                 = "Name"
+      "value"               = "eks-${var.cluster_name}-nodes-${var.nodegroup_name}"
+      "propagate_at_launch" = "true"
+    },
+    {
+      "key"                 = "kubernetes.io/cluster/${var.cluster_name}"
+      "value"               = "owned"
+      "propagate_at_launch" = "true"
+    },
+    {
+      "key"                 = "k8s.io/cluster-autoscaler/${var.autoscaling_enabled == true ? "enabled" : "disabled"}"
+      "value"               = "true"
+      "propagate_at_launch" = "false"
+    },
+    {
+      "key"                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
+      "value"               = "owned"
+      "propagate_at_launch" = "true"
+    }
+    ],
+    local.transformed_tags
+  )
 }
