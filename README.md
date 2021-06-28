@@ -41,9 +41,18 @@ data "aws_eks_cluster_auth" "cluster" {
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
-  token                  = data.aws_eks_cluster_auth.cluster.token
   load_config_file       = false
   version                = "1.11.1"
+
+  # Use exec plugin to obtain a token.  This is needed because terraform doesn't refresh state on a destroy,
+  # so it is unable to successfully authenticate to k8s to remove the configmap resource.
+  # See https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#stacking-with-managed-kubernetes-cluster-resources
+  # and https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#exec-plugins for more information.
+  exec {
+    api_version = "client.authentication.k8s.io/v1alpha1"
+    args        = ["--profile", local.workspace["aws_profile"], "eks", "get-token", "--cluster-name", module.cluster.cluster_name]
+    command     = "aws"
+  }
 }
 ```
 
