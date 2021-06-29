@@ -192,6 +192,38 @@ Type: `map(string)`
 
 Default: `{}`
 
+## addon coredns
+
+### enable_addon_codedns
+Description: Enable addon coredns
+
+Type: bool
+
+Default: true
+
+### addon_coredns_version
+Description: Coredns add-on version is set to null, which will take default version of addon
+Type: string
+
+Default: null
+
+## addon kubeproxy
+
+### enable_addon_kubeproxy
+Description: Enable addon kube-proxy
+
+Type: bool
+
+Default: true
+
+### addon_kubeproxy_version
+Description: kube-proxy add-on version is set to null, which will take default version of addon
+
+Type: string
+
+Default: null
+
+
 ## Outputs
 
 The following outputs are exported:
