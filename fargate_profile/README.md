@@ -1,8 +1,15 @@
+Flag --no-providers has been deprecated, use '--hide providers' instead
 ## Requirements
 
 The following requirements are needed by this module:
 
 - terraform ( >= 0.12.26)
+
+- aws (>= 2.55.0)
+
+## Providers
+
+The following providers are used by this module:
 
 - aws (>= 2.55.0)
 

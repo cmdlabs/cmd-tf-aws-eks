@@ -1,8 +1,19 @@
+Flag --no-providers has been deprecated, use '--hide providers' instead
 ## Requirements
 
 The following requirements are needed by this module:
 
 - terraform (>= 0.12.26)
+
+- aws (>= 2.55.0)
+
+- kubernetes (>= 1.11.1)
+
+- null (>= 2.1.2)
+
+## Providers
+
+The following providers are used by this module:
 
 - aws (>= 2.55.0)
 
@@ -47,6 +58,22 @@ Type: `string`
 ## Optional Inputs
 
 The following input variables are optional (have default values):
+
+### addon\_coredns\_version
+
+Description: CoreDNS add-on version
+
+Type: `string`
+
+Default: `null`
+
+### addon\_kubeproxy\_version
+
+Description: kube-proxy add-on version
+
+Type: `string`
+
+Default: `null`
 
 ### auth\_roles
 
@@ -120,6 +147,22 @@ Type: `number`
 
 Default: `0`
 
+### enable\_addon\_coredns
+
+Description: Enable CoreDNS add-on
+
+Type: `bool`
+
+Default: `true`
+
+### enable\_addon\_kubeproxy
+
+Description: Enable kube-proxy add-on
+
+Type: `bool`
+
+Default: `true`
+
 ### enable\_ecr
 
 Description: Grant AmazonEC2ContainerRegistryReadOnly permissions to worker nodes
@@ -191,38 +234,6 @@ Description: Tags to apply to created resources
 Type: `map(string)`
 
 Default: `{}`
-
-## addon coredns
-
-### enable_addon_codedns
-Description: Enable addon coredns
-
-Type: bool
-
-Default: true
-
-### addon_coredns_version
-Description: Coredns add-on version is set to null, which will take default version of addon
-Type: string
-
-Default: null
-
-## addon kubeproxy
-
-### enable_addon_kubeproxy
-Description: Enable addon kube-proxy
-
-Type: bool
-
-Default: true
-
-### addon_kubeproxy_version
-Description: kube-proxy add-on version is set to null, which will take default version of addon
-
-Type: string
-
-Default: null
-
 
 ## Outputs
 
