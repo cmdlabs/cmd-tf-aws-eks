@@ -5,7 +5,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.6.0] 2021-06-29
 ### Changed
-   - Default version of EKS is now 1.19
    - kube-proxy add-on deployment with default version matching EKS version
    - CoreDNS add-on deployment with default version matching EKS version
    
