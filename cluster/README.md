@@ -1,8 +1,19 @@
+Flag --no-providers has been deprecated, use '--hide providers' instead
 ## Requirements
 
 The following requirements are needed by this module:
 
 - terraform (>= 0.12.26)
+
+- aws (>= 2.55.0)
+
+- kubernetes (>= 1.11.1)
+
+- null (>= 2.1.2)
+
+## Providers
+
+The following providers are used by this module:
 
 - aws (>= 2.55.0)
 
@@ -47,6 +58,22 @@ Type: `string`
 ## Optional Inputs
 
 The following input variables are optional (have default values):
+
+### addon\_coredns\_version
+
+Description: CoreDNS add-on version
+
+Type: `string`
+
+Default: `null`
+
+### addon\_kubeproxy\_version
+
+Description: kube-proxy add-on version
+
+Type: `string`
+
+Default: `null`
 
 ### auth\_roles
 
@@ -119,6 +146,22 @@ Description: Specifies the number of days you want to retain control plane log e
 Type: `number`
 
 Default: `0`
+
+### enable\_addon\_coredns
+
+Description: Enable CoreDNS add-on
+
+Type: `bool`
+
+Default: `true`
+
+### enable\_addon\_kubeproxy
+
+Description: Enable kube-proxy add-on
+
+Type: `bool`
+
+Default: `true`
 
 ### enable\_ecr
 

@@ -109,10 +109,33 @@ variable "manage_aws_auth" {
   default     = false
 }
 
-
 variable "enable_eks_encryption" {
   description = "Enable EKS encryption provider for secrets"
   type        = bool
   default     = false
 }
 
+variable "enable_addon_coredns" {
+  description = "Enable CoreDNS add-on"
+  type        = bool
+  default     = true
+}
+
+variable "addon_coredns_version" {
+  description = "CoreDNS add-on version"
+  type        = string
+  default     = null
+}
+
+
+variable "enable_addon_kubeproxy" {
+  description = "Enable kube-proxy add-on"
+  type        = bool
+  default     = true
+}
+
+variable "addon_kubeproxy_version" {
+  description = "kube-proxy add-on version"
+  type        = string
+  default     = null
+}

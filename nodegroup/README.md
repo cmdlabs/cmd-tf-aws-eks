@@ -1,3 +1,4 @@
+Flag --no-providers has been deprecated, use '--hide providers' instead
 ## Requirements
 
 The following requirements are needed by this module:
@@ -7,6 +8,14 @@ The following requirements are needed by this module:
 - aws (>= 2.55.0)
 
 - null (>= 2.1.2)
+
+- template (>= 2.1)
+
+## Providers
+
+The following providers are used by this module:
+
+- aws (>= 2.55.0)
 
 - template (>= 2.1)
 
