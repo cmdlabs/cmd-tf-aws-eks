@@ -33,7 +33,7 @@ Environment="no_proxy=${proxy_bypass}"
 %{ endif ~}
 
 # Install SSM Agent
-yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+rpm -q amazon-ssm-agent || yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
 systemctl daemon-reload
 systemctl enable amazon-ssm-agent
 systemctl start amazon-ssm-agent
