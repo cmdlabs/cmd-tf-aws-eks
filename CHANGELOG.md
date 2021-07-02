@@ -3,11 +3,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.7.0] 2021-07-01
+### Breaking
+   - Updated nodegroup module to be compatible with terraform 1.0.0.  This is a breaking change for terraform versions less than 0.12.x, and has not been tested on versions earlier than 0.13.x.
+### Changed
+   - Updated nodegroup userdata script to ensure that amazon-ssm-agent is only attempted if it is not already installed.  This is necessary since [Amazon EKS AMI release v20210621](https://github.com/awslabs/amazon-eks-ami/blob/master/CHANGELOG.md#ami-release-v20210621).
+
 ## [0.6.0] 2021-06-29
 ### Changed
    - kube-proxy add-on deployment with default version matching EKS version
    - CoreDNS add-on deployment with default version matching EKS version
-   
+ 
 ## [0.5.0] 2021-03-12
 ### Changed
 - Implemented workaround to terraform bug that prevents the use of tags with computed values
