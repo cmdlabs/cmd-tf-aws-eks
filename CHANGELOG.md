@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.7.1] 2021-09-17
 ### Added
    - added conditional statements to IRSA Roles
-### Fix
-   - in nodegroup userdata moved eks bootstrap script above SSM Agent installation so nodes connect to cluster on creation
 
 ## [0.7.0] 2021-07-01
 ### Breaking

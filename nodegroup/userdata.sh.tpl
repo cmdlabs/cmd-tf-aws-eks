@@ -32,9 +32,6 @@ Environment="no_proxy=${proxy_bypass}"
 " > /etc/systemd/system/docker.service.d/0-http-proxy.conf
 %{ endif ~}
 
-# Bootstrap and join the cluster
-/etc/eks/bootstrap.sh --kubelet-extra-args '${kubelet_extra_args}' '${cluster_name}'
-
 # Install SSM Agent
 rpm -q amazon-ssm-agent || yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
 systemctl daemon-reload
@@ -43,6 +40,9 @@ systemctl start amazon-ssm-agent
 
 systemctl daemon-reload
 systemctl restart docker
+
+# Bootstrap and join the cluster
+/etc/eks/bootstrap.sh --kubelet-extra-args '${kubelet_extra_args}' '${cluster_name}'
 
 # Allow user supplied userdata code
 ${post_userdata}
