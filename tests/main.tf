@@ -89,11 +89,13 @@ module "role1" {
         "ssm:GetParameters"
       ]
       condition = {
-        test     = "IpAddress"
-        variable = "aws:SourceIp"
-        values = [
-          "10.10.10.0/24"
-        ]
+        values = {
+          test     = "IpAddress"
+          variable = "aws:SourceIp"
+          values = [
+            "10.10.10.0/24"
+          ]
+        }
       }
       effect    = "Allow"
       resources = ["*"]
@@ -101,11 +103,13 @@ module "role1" {
     {
       actions = ["cloudformation:*"]
       condition = {
-        test     = "IpAddress"
-        variable = "aws:SourceIp"
-        values = [
-          "10.10.20.0/24"
-        ]
+        values = {
+          test     = "IpAddress"
+          variable = "aws:SourceIp"
+          values = [
+            "10.10.20.0/24"
+          ]
+        }
       }
       effect    = "Allow"
       resources = ["*"]
