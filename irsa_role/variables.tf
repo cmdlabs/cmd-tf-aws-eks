@@ -29,11 +29,21 @@ variable "service_account" {
 }
 
 variable "policies" {
-  description = ""
+  description = "IAM policy attributes for IRSA roles"
   type = list(object({
     actions   = list(string)
     resources = list(string)
   }))
+}
+variable "conditional_policies" {
+  description = "IAM policy attributes for IRSA policies with conditional statements"
+  type = list(object({
+    actions   = list(string)
+    resources = list(string)
+    effect    = string
+    condition = any
+  }))
+  default = []
 }
 
 variable "tags" {
