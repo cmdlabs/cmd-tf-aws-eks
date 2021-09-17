@@ -82,6 +82,36 @@ module "role1" {
     }
   ]
 
+  conditional_policies = [
+    {
+      actions = [
+        "ssm:DescribeParameters",
+        "ssm:GetParameters"
+      ]
+      condition = {
+        test     = "IpAddress"
+        variable = "aws:SourceIp"
+        values = [
+          "10.10.10.0/24"
+        ]
+      }
+      effect    = "Allow"
+      resources = ["*"]
+    },
+    {
+      actions = ["cloudformation:*"]
+      condition = {
+        test     = "IpAddress"
+        variable = "aws:SourceIp"
+        values = [
+          "10.10.20.0/24"
+        ]
+      }
+      effect    = "Allow"
+      resources = ["*"]
+    }
+  ]
+
   tags = {
     Owner = "CMD"
   }
