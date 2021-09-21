@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] 2021-09-17
+### Added
+   - added conditional statements to IRSA Roles
+
 ## [0.7.0] 2021-07-01
 ### Breaking
    - Updated nodegroup module to be compatible with terraform 1.0.0.  This is a breaking change for terraform versions less than 0.12.x, and has not been tested on versions earlier than 0.13.x.

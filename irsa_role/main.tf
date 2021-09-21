@@ -15,6 +15,22 @@ data "aws_iam_policy_document" "federated" {
 
 data "aws_iam_policy_document" "main" {
   dynamic "statement" {
+    for_each = var.conditional_policies
+    content {
+      actions   = statement.value.actions
+      resources = statement.value.resources
+      effect    = statement.value.effect
+      dynamic "condition" {
+        for_each = statement.value.condition
+        content {
+          test     = condition.value.test
+          variable = condition.value.variable
+          values   = condition.value.values
+        }
+      }
+    }
+  }
+  dynamic "statement" {
     for_each = var.policies
     content {
       actions   = statement.value.actions
