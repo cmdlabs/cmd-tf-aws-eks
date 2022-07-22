@@ -165,6 +165,24 @@ variable "proxy_bypass" {
   default     = "169.254.169.254,.eks.amazonaws.com"
 }
 
+variable "create_schedule" {
+  type        = bool
+  description = "Schedule shutdown and startup of ASG instances"
+  default     = false
+}
+
+variable "scheduled_shutdown" {
+  description = "Scheduled shutdown of ASG instances in UTC"
+  type        = string
+  default     = "00 09 * * MON-FRI" # 7pm Mon-Fri AEST
+}
+
+variable "scheduled_startup" {
+  description = "Scheduled startup of ASG instances in UTC"
+  type        = string
+  default     = "00 21 * * SUN-THU" # 7am Mon-Fri AEST
+}
+
 variable "tags" {
   description = "Tags to apply to created resources"
   type        = map(string)
