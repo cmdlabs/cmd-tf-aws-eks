@@ -69,8 +69,12 @@ resource "aws_launch_template" "node" {
 
     ebs {
       volume_size           = var.root_volume_size
-      volume_type           = "gp2"
-      delete_on_termination = true
+      volume_type           = var.root_volume_type
+      delete_on_termination = var.root_volume_delete_on_termination
+      encrypted             = var.root_volume_encrypted
+      kms_key_id            = var.root_ebs_kms_key_id != "" ? var.root_ebs_kms_key_id : null
+      snapshot_id           = var.root_volume_snapshot_id != "" ? var.root_volume_snapshot_id : null
+      throughput            = var.root_volume_throughput != "" ? var.root_volume_throughput : null
     }
   }
 

@@ -141,6 +141,42 @@ variable "root_volume_size" {
   default     = 100
 }
 
+variable "root_volume_type" {
+  description = "EBS Volume Type gps2, gps3, io1, io2. Default is gp2"
+  type        = string
+  default     = "gp2"
+}
+
+variable "root_volume_delete_on_termination" {
+  description = "EBS Root volume delete on termination. Default is true"
+  type        = bool
+  default     = true
+}
+
+variable "root_volume_encrypted" {
+  description = "EBS Root volume is encrypted using KMS. Default is true"
+  type        = bool
+  default     = true
+}
+
+variable "root_ebs_kms_key_id" {
+  description = "CMK KMS Key ID for defined root volume. Default is none will use AWS/EBS KMS Key Id if root_volume_encrypted is true (default)."
+  type        = string
+  default     = ""
+}
+
+variable "root_volume_snapshot_id" {
+  description = "EBS Root Volume will be based off desired Snapshot ID if defined. Default is null (none) for compatability."
+  type        = string
+  default     = ""
+}
+
+variable "root_volume_throughput" {
+  description = "EBS Root Volume throughput in MiB/s if gp3 type up to 1000MiB/s. Default is null (none) as defalt volume type is still gp2 for compatability."
+  type        = string
+  default     = ""
+}
+
 variable "detailed_monitoring" {
   description = "Enable EC2 detailed monitoring"
   type        = bool

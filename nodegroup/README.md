@@ -220,6 +220,54 @@ Type: `number`
 
 Default: `100`
 
+### root\_volume\_type
+
+Description: EBS Root Volume Type gps2, gps3, io1, io2. Default is gp2
+
+Type: `string`
+
+Default: `gp2`
+
+### root\_volume\_delete\_on\_termination
+
+Description: EBS Root volume delete on termination. Default is true
+
+Type: `bool`
+
+Default: `true`
+
+### root\_volume\_volume\_encrypted
+
+Description: EBS Root volume is encrypted using KMS. Default is true
+
+Type: `bool`
+
+Default: `true`
+
+### root\_ebs\_kms\_key\_id
+
+Description: CMK KMS Key ID for defined EBS Root volume. Default is none will use AWS/EBS KMS Key Id if root_volume_encrypted is true (default
+
+Type: `string`
+
+Default: `""`
+
+### root\_volume\_snapshot\_id
+
+Description: EBS Root Volume will be based off desired Snapshot ID if defined. Default is null (none) for compatability.
+
+Type: `string`
+
+Default: `""`
+
+### root\_volume\_volume\_throughput
+
+Description: EBS Root Volume throughput in MiB/s if gp3 type up to 1000MiB/s. Default is null (none) as defalt volume type is still gp2 for compatability.
+
+Type: `string`
+
+Default: `""`
+
 ### spot\_allocation\_strategy
 
 Description: How to allocate capacity across the Spot pools
