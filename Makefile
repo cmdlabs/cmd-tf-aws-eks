@@ -5,10 +5,10 @@ ifdef CI
 endif
 
 docs: .env
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers cluster > cluster/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers irsa_role > irsa_role/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers nodegroup > nodegroup/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers fargate_profile > fargate_profile/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers cluster > cluster/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers irsa_role > irsa_role/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers nodegroup > nodegroup/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers fargate_profile > fargate_profile/README.md
 PHONY: docs
 
 format: .env
