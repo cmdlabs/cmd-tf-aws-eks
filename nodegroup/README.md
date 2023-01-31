@@ -1,11 +1,10 @@
-Flag --no-providers has been deprecated, use '--hide providers' instead
 ## Requirements
 
 The following requirements are needed by this module:
 
-- terraform ( >= 0.12.26)
+- terraform ( >= 0.14.6)
 
-- aws (>= 2.55.0)
+- aws (>= 3.76.1)
 
 - null (>= 2.1.2)
 
@@ -15,7 +14,7 @@ The following requirements are needed by this module:
 
 The following providers are used by this module:
 
-- aws (>= 2.55.0)
+- aws (>= 3.76.1)
 
 - template (>= 2.1)
 
@@ -222,7 +221,7 @@ Default: `100`
 
 ### root\_volume\_type
 
-Description: EBS Root Volume Type gps2, gps3, io1, io2. Default is gp2
+Description: EBS Root Volume Type gp2, gp3, io1, io2. Default is gp2
 
 Type: `string`
 

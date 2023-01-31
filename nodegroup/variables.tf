@@ -142,9 +142,15 @@ variable "root_volume_size" {
 }
 
 variable "root_volume_type" {
-  description = "EBS Volume Type gps2, gps3, io1, io2. Default is gp2"
+  description = "EBS Volume Type gp2, gp3, io1, io2. Default is gp2"
   type        = string
   default     = "gp2"
+}
+
+variable "root_volume_iops" {
+  description = "Provisioned IOPS is using io1/io2. Ignored otherwise"
+  type        = string
+  default     = ""
 }
 
 variable "root_volume_delete_on_termination" {
