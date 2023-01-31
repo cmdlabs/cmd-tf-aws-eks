@@ -23,7 +23,7 @@ resource "null_resource" "wait_for_cluster" {
   count = var.manage_aws_auth ? 1 : 0
 
   provisioner "local-exec" {
-    command = "echo Waiting for API Server endpoint...;for i in `seq 1 20`; do curl -k -s -m 15 $ENDPOINT/healthz && exit 0 || true; sleep 5; done; echo Failed waiting for API Server endpoint && exit 1"
+    command = "echo Waiting for API Server endpoint...;for i in `seq 1 60`; do curl -k -s -m 15 $ENDPOINT/healthz && exit 0 || true; sleep 5; done; echo Failed waiting for API Server endpoint && exit 1"
     environment = {
       ENDPOINT = aws_eks_cluster.main.endpoint
     }
