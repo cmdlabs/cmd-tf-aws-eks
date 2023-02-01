@@ -148,7 +148,7 @@ variable "root_volume_type" {
 }
 
 variable "root_volume_iops" {
-  description = "Provisioned IOPS is using io1/io2. Ignored otherwise"
+  description = "Provisioned IOPS is using io1/io2/gp3. Ignored otherwise"
   type        = string
   default     = ""
 }
