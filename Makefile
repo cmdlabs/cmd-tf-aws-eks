@@ -1,14 +1,14 @@
-RELEASE_VERSION = 0.7.1
+RELEASE_VERSION = 0.7.2
 
 ifdef CI
 	PROFILE_REQUIRED=profile
 endif
 
 docs: .env
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers cluster > cluster/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers irsa_role > irsa_role/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers nodegroup > nodegroup/README.md
-	docker-compose run --rm terraform-utils terraform-docs markdown document --no-providers fargate_profile > fargate_profile/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers cluster > cluster/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers irsa_role > irsa_role/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers nodegroup > nodegroup/README.md
+	docker-compose run --rm terraform-utils terraform-docs markdown document --hide providers fargate_profile > fargate_profile/README.md
 PHONY: docs
 
 format: .env
@@ -20,19 +20,19 @@ formatCheck: .env
 PHONY: formatCheck
 
 init: .env $(PROFILE_REQUIRED)
-	docker-compose run --rm terraform-utils terraform init tests
+	docker-compose run --rm terraform-utils terraform -chdir=tests init
 PHONY: init
 
 plan: .env $(PROFILE_REQUIRED) init
-	docker-compose run --rm terraform-utils terraform plan tests
+	docker-compose run --rm terraform-utils terraform -chdir=tests plan
 PHONY: plan
 
 apply: .env $(PROFILE_REQUIRED) init
-	docker-compose run --rm terraform-utils terraform apply -auto-approve tests
+	docker-compose run --rm terraform-utils terraform -chdir=tests apply -auto-approve
 PHONY: apply
 
 destroy: .env $(PROFILE_REQUIRED) init
-	docker-compose run --rm terraform-utils terraform destroy -auto-approve tests
+	docker-compose run --rm terraform-utils terraform -chdir=tests destroy -auto-approve
 PHONY: destroy
 
 tag:

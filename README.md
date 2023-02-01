@@ -25,7 +25,7 @@ It is possible for the cluster module to manage the aws-auth configmap. However 
 As the cluster module uses the AWS and Kubernetes provider the `provider.tf` is more complex than normal. As a result a sample is included below.
 ```hcl
 provider "aws" {
-  version                 = "2.55.0"
+  version                 = "3.76.1"
   region                  = "ap-southeast-2"
   skip_metadata_api_check = true
 }
@@ -42,7 +42,7 @@ provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   load_config_file       = false
-  version                = "1.11.1"
+  version                = "2.17.0"
 
   # Use exec plugin to obtain a token.  This is needed because terraform doesn't refresh state on a destroy,
   # so it is unable to successfully authenticate to k8s to remove the configmap resource.
